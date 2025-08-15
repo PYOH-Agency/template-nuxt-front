@@ -108,12 +108,16 @@ export const useStrapiApi = () => {
    */
   const healthCheck = async () => {
     try {
-      await $fetch('/api/health', {
+      const response = await $fetch('/api', {
         baseURL: strapiUrl,
         server: false
       })
       return true
-    } catch {
+    } catch (error) {
+      // Si c'est une erreur 404 de Strapi (JSON), c'est que l'API fonctionne
+      if (error?.data?.error?.name === 'NotFoundError') {
+        return true
+      }
       return false
     }
   }

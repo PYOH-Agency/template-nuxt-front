@@ -120,14 +120,15 @@ const appDescription = config.public.appDescription || 'Template Nuxt 3 avec int
 const strapiUrl = config.public.strapiUrl
 
 // Test de connexion Strapi
-const { data: strapiHealth } = await useFetch('/api/health', {
+const { data: strapiHealth, error: strapiError } = await useFetch('/api', {
   baseURL: strapiUrl,
   server: false,
   default: () => null
 })
 
 const strapiStatus = computed(() => {
-  if (strapiHealth.value) {
+  // Si on a une réponse (même erreur 404) ou une erreur NotFoundError de Strapi, c'est connecté
+  if (strapiHealth.value || strapiError.value?.data?.error?.name === 'NotFoundError') {
     return {
       text: 'Connecté ✅',
       color: 'text-green-400',

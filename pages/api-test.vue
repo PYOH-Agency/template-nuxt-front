@@ -150,7 +150,7 @@ const testConnection = async () => {
   testResult.value = null
   
   try {
-    const response = await $fetch('/api/health', {
+    const response = await $fetch('/api', {
       baseURL: strapiUrl
     })
     
@@ -159,9 +159,17 @@ const testConnection = async () => {
       message: 'Connexion réussie ! L\'API Strapi répond correctement.'
     }
   } catch (err) {
-    testResult.value = {
-      success: false,
-      message: `Erreur de connexion : ${err.message || 'Impossible de joindre l\'API'}`
+    // Si c'est une erreur 404 de Strapi (JSON), c'est que l'API fonctionne
+    if (err?.data?.error?.name === 'NotFoundError') {
+      testResult.value = {
+        success: true,
+        message: 'Connexion réussie ! L\'API Strapi répond correctement (pas de content types encore).'
+      }
+    } else {
+      testResult.value = {
+        success: false,
+        message: `Erreur de connexion : ${err.message || 'Impossible de joindre l\'API'}`
+      }
     }
   } finally {
     testing.value = false
