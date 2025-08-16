@@ -1,162 +1,212 @@
-# Template Nuxt 3 + Strapi
+# 🚀 Template Nuxt Front - Monitoring Complet
 
-Template de démarrage pour projets utilisant Nuxt 3 avec intégration Strapi.
+Template Nuxt 3 avec intégration Strapi et système de monitoring complet et professionnel.
 
-## 🚀 Fonctionnalités
+## ✨ **Fonctionnalités Incluses**
 
-- **Nuxt 3** avec TypeScript
-- **Tailwind CSS** pour le styling
-- **Intégration Strapi** avec composables personnalisés
-- **Authentification** prête à l'emploi
-- **Pages d'exemple** et tests API
-- **Structure de projet** optimisée
+### **🎯 Framework & CMS**
+- **Nuxt 3** - Framework Vue.js moderne avec SSR
+- **Strapi** - Headless CMS intégré
+- **Tailwind CSS** - Framework CSS utilitaire
+- **TypeScript** - Support complet des types
 
-## 📋 Prérequis
+### **📊 Monitoring Complet**
+- **Sentry** - Suivi des erreurs et performance
+- **Google Analytics 4** - Analytics utilisateur
+- **Plausible Analytics** - Analytics respectueux de la vie privée
+- **Google Tag Manager** - Gestion centralisée des tags
+- **Uptime Robot** - Surveillance de disponibilité 24h/24
+- **Grafana** - Visualisation et alertes centralisées
 
-- Node.js 18+ 
-- npm/yarn/pnpm
-- Instance Strapi (local ou cloud)
+### **🚀 Déploiement Automatique**
+- **Vercel** - Déploiement automatique depuis GitHub
+- **Scripts automatisés** - Configuration et déploiement
+- **Variables d'environnement** - Gestion production/development
+- **CI/CD** - Intégration continue
 
-## 🛠 Installation
+## 🛠 **Installation Rapide**
 
-1. Clonez ce repository
+### **1. Créer un nouveau projet**
 ```bash
-git clone <votre-repo>
-cd votre-projet
+# Depuis le répertoire script/
+./init-project.sh client "Nom du Client"
 ```
 
-2. Installez les dépendances
+### **2. Configuration automatique**
+Le script configure automatiquement :
+- ✅ Projet Nuxt avec toutes les dépendances
+- ✅ Intégration Strapi
+- ✅ Configuration Sentry (création automatique du projet)
+- ✅ Variables d'environnement
+- ✅ Scripts de déploiement
+
+### **3. Déploiement en production**
 ```bash
-npm install
+# Dans le projet créé
+./deploy.sh
 ```
 
-3. Configurez les variables d'environnement
+## 📁 **Structure du Template**
+
+```
+template-nuxt-front/
+├── 📄 nuxt.config.ts          # Configuration Nuxt avec monitoring
+├── 📄 package.json             # Dépendances (Sentry, Analytics, Uptime Robot)
+├── 📄 vercel.json             # Configuration Vercel
+├── 📄 env.example             # Variables d'environnement
+├── 📄 deploy.sh               # Script de déploiement automatisé
+├── 📄 DEPLOYMENT.md           # Guide de déploiement
+├── 📄 MONITORING.md           # Guide du monitoring
+├── 📁 composables/
+│   └── 📄 useMonitoring.ts    # Composable de monitoring générique
+├── 📁 pages/
+│   ├── 📄 sentry-test.vue     # Test Sentry
+│   ├── 📄 analytics-test.vue  # Test Analytics
+│   └── 📄 uptime-test.vue     # Test Uptime Robot
+└── 📁 components/
+    └── 📄 SentryTest.vue      # Composant de test Sentry
+```
+
+## 🔧 **Configuration**
+
+### **Variables d'Environnement Requises**
+
 ```bash
-cp env.example .env
+# Strapi
+NUXT_PUBLIC_STRAPI_URL=https://votre-strapi-url.com
+NUXT_PUBLIC_STRAPI_TOKEN=votre_token
+
+# Sentry
+NUXT_PUBLIC_SENTRY_DSN=votre_sentry_dsn
+NUXT_PUBLIC_SENTRY_ENVIRONMENT=development
+
+# Analytics
+NUXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NUXT_PUBLIC_PLAUSIBLE_DOMAIN=votre-domaine.com
+NUXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+
+# Uptime Robot
+NUXT_PUBLIC_UPTIME_ROBOT_API_KEY=votre_api_key
+NUXT_PUBLIC_UPTIME_ROBOT_MONITOR_ID=votre_monitor_id
+
+# Grafana
+NUXT_PUBLIC_GRAFANA_URL=http://localhost:3000
+NUXT_PUBLIC_GRAFANA_API_KEY=votre_api_key
 ```
 
-4. Modifiez le fichier `.env` avec vos configurations Strapi :
-```env
-NUXT_PUBLIC_STRAPI_URL=https://votre-strapi.com
-NUXT_PUBLIC_STRAPI_TOKEN=votre_token_public
-NUXT_PUBLIC_APP_NAME=Nom de votre projet
-NUXT_PUBLIC_APP_DESCRIPTION=Description de votre projet
-```
+## 📊 **Utilisation du Monitoring**
 
-5. Lancez le serveur de développement
-```bash
-npm run dev
-```
+### **Composable useMonitoring**
 
-## 📁 Structure du projet
+```typescript
+// Dans vos composants
+const { 
+  initializeMonitoring, 
+  trackEvent, 
+  trackPageView, 
+  captureError,
+  checkUptimeStatus 
+} = useMonitoring()
 
-```
-├── assets/
-│   └── css/                 # Styles CSS/Tailwind
-├── components/              # Composants Vue réutilisables
-├── composables/             # Composables personnalisés
-│   └── useStrapi.ts        # Intégration Strapi
-├── pages/                   # Pages de l'application
-│   ├── index.vue           # Page d'accueil
-│   └── api-test.vue        # Test de l'API Strapi
-├── app.vue                  # Layout principal
-├── nuxt.config.ts          # Configuration Nuxt
-└── env.example             # Variables d'environnement exemple
-```
-
-## 🔧 Configuration Strapi
-
-### Variables d'environnement
-
-- `NUXT_PUBLIC_STRAPI_URL` : URL de votre instance Strapi
-- `NUXT_PUBLIC_STRAPI_TOKEN` : Token public Strapi (optionnel)
-- `NUXT_PUBLIC_APP_NAME` : Nom de votre application
-- `NUXT_PUBLIC_APP_DESCRIPTION` : Description de votre application
-
-### Utilisation des composables
-
-#### API Strapi
-
-```vue
-<script setup>
-const { getCollection, getItem, createItem } = useStrapiApi()
-
-// Récupérer une collection
-const articles = await getCollection('articles')
-
-// Récupérer un élément spécifique
-const article = await getItem('articles', 1)
-
-// Créer un nouvel élément
-const newArticle = await createItem('articles', {
-  title: 'Mon article',
-  content: 'Contenu de l\'article'
+// Initialiser le monitoring
+onMounted(() => {
+  initializeMonitoring()
 })
-</script>
+
+// Tracker un événement
+trackEvent('button_click', { 
+  button: 'cta', 
+  page: 'home' 
+})
+
+// Capturer une erreur
+captureError(error, { context: 'user_action' })
+
+// Vérifier le statut Uptime Robot
+const status = await checkUptimeStatus()
 ```
 
-#### Authentification
+### **Pages de Test**
 
-```vue
-<script setup>
-const { login, register, logout, user, isAuthenticated } = useStrapiAuth()
+- **`/sentry-test`** - Test Sentry et monitoring d'erreurs
+- **`/analytics-test`** - Test Analytics et tracking utilisateur
+- **`/uptime-test`** - Test Uptime Robot et surveillance
 
-// Connexion
-await login('email@example.com', 'password')
+## 🚀 **Déploiement**
 
-// Inscription
-await register('username', 'email@example.com', 'password')
+### **Déploiement Automatique**
 
-// Déconnexion
-await logout()
-</script>
-```
+1. **Configuration GitHub** : Le script configure automatiquement l'origine
+2. **Configuration Vercel** : Intégration automatique avec Vercel
+3. **Variables d'environnement** : Configuration production/development
+4. **Monitoring en production** : Tous les outils sont configurés
 
-## 📖 Pages disponibles
-
-- **`/`** : Page d'accueil avec aperçu du projet
-- **`/api-test`** : Test de connexion à l'API Strapi
-
-## 🛠 Commandes disponibles
+### **Script de Déploiement**
 
 ```bash
-# Développement
-npm run dev
+# Déploiement complet
+./deploy.sh
 
-# Build de production
-npm run build
-
-# Prévisualisation
-npm run preview
-
-# Génération statique
-npm run generate
+# Le script :
+# 1. Vérifie le projet
+# 2. Installe les dépendances
+# 3. Teste le build
+# 4. Push vers GitHub
+# 5. Configure Vercel
+# 6. Déploie en production
 ```
 
-## 🎨 Personnalisation
+## 📚 **Documentation**
 
-### Tailwind CSS
+- **`DEPLOYMENT.md`** - Guide complet de déploiement
+- **`MONITORING.md`** - Guide du système de monitoring
+- **`env.example`** - Exemple de configuration
+- **`vercel.json`** - Configuration Vercel
 
-Les styles sont configurés dans `assets/css/main.css`. Vous pouvez :
-- Modifier les couleurs dans `tailwind.config.js`
-- Ajouter des composants CSS personnalisés
-- Utiliser les classes utilitaires Tailwind
+## 🎯 **Avantages du Template**
 
-### Composants
+### **✅ Professionnel**
+- Monitoring de niveau entreprise
+- Intégration complète des outils
+- Configuration automatisée
 
-Créez vos composants dans le dossier `components/`. Ils sont automatiquement importés par Nuxt.
+### **✅ Réutilisable**
+- Un seul template pour tous les projets
+- Configuration générique et adaptable
+- Scripts d'automatisation
 
-### Pages
+### **✅ Maintenable**
+- Une seule source de vérité
+- Mises à jour centralisées
+- Documentation complète
 
-Ajoutez vos pages dans le dossier `pages/`. Le routage est automatique basé sur la structure de fichiers.
+### **✅ Productif**
+- Création de projet en quelques minutes
+- Déploiement automatique
+- Monitoring immédiat
 
-## 🔗 Ressources
+## 🔄 **Mise à Jour du Template**
 
-- [Documentation Nuxt 3](https://nuxt.com)
-- [Documentation Strapi](https://strapi.io)
-- [Documentation Tailwind CSS](https://tailwindcss.com)
-- [Module Nuxt Strapi](https://strapi.nuxtjs.org)
+Pour mettre à jour le template :
 
-## 📝 License
+```bash
+# Depuis le répertoire template-nuxt-front/
+git add .
+git commit -m "feat: update template with new features"
+git push origin main
 
-MIT
+# Les nouveaux projets utiliseront automatiquement la version mise à jour
+```
+
+## 🎉 **Résultat Final**
+
+Avec ce template, chaque nouveau projet aura automatiquement :
+
+1. **🚀 Nuxt 3** avec Strapi intégré
+2. **📊 Monitoring complet** (Sentry, Analytics, Uptime Robot)
+3. **🌐 Déploiement automatique** sur Vercel
+4. **📱 PWA** et optimisation mobile
+5. **🔧 Scripts automatisés** pour tout configurer
+6. **📚 Documentation complète** pour chaque aspect
+
+**Prêt à créer des projets professionnels en quelques minutes ?** 🚀

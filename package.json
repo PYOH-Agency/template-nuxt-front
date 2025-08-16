@@ -1,7 +1,7 @@
 {
   "name": "template-nuxt-front",
   "version": "1.0.0",
-  "description": "Template Nuxt 3 avec intégration Strapi",
+  "description": "Template Nuxt 3 avec intégration Strapi et monitoring complet",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -19,6 +19,10 @@
   "dependencies": {
     "@nuxtjs/strapi": "^1.9.0",
     "@pinia/nuxt": "^0.5.1",
-    "pinia": "^2.1.7"
+    "pinia": "^2.1.7",
+    "@sentry/nuxt": "^3.0.0",
+    "@nuxtjs/google-analytics": "^3.0.0",
+    "web-vitals": "^3.5.0"
   }
 }
+
