@@ -60,6 +60,16 @@ print_status "Étape 2: Installation des dépendances..."
 npm install
 print_success "Dépendances installées"
 
+# Étape 2.5: Configuration du kit de composants
+print_status "Étape 2.5: Configuration du kit de composants..."
+if [ -f "scripts/setup-kit.sh" ]; then
+    chmod +x scripts/setup-kit.sh
+    ./scripts/setup-kit.sh
+    print_success "Kit de composants configuré"
+else
+    print_warning "Script de configuration du kit non trouvé"
+fi
+
 # Étape 3: Test du build
 print_status "Étape 3: Test du build..."
 npm run build

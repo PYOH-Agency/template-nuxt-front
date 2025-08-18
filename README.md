@@ -1,212 +1,118 @@
-# 🚀 Template Nuxt Front - Monitoring Complet
+# Template Nuxt 3 + Strapi + Monitoring Complet
 
-Template Nuxt 3 avec intégration Strapi et système de monitoring complet et professionnel.
+Template Nuxt 3 avec intégration Strapi et monitoring complet pour la production.
 
-## ✨ **Fonctionnalités Incluses**
+## 🚀 Fonctionnalités
 
-### **🎯 Framework & CMS**
-- **Nuxt 3** - Framework Vue.js moderne avec SSR
+- **Nuxt 3** - Framework Vue.js moderne
 - **Strapi** - Headless CMS intégré
 - **Tailwind CSS** - Framework CSS utilitaire
-- **TypeScript** - Support complet des types
+- **Pinia** - Gestion d'état Vue 3
+- **Monitoring complet** - Sentry, Google Analytics, Uptime Robot
+- **Kit de composants** - Composants réutilisables @pbugeon/nuxt-components-kit
 
-### **📊 Monitoring Complet**
-- **Sentry** - Suivi des erreurs et performance
-- **Google Analytics 4** - Analytics utilisateur
-- **Plausible Analytics** - Analytics respectueux de la vie privée
-- **Google Tag Manager** - Gestion centralisée des tags
-- **Uptime Robot** - Surveillance de disponibilité 24h/24
-- **Grafana** - Visualisation et alertes centralisées
+## 📦 Kit de Composants
 
-### **🚀 Déploiement Automatique**
-- **Vercel** - Déploiement automatique depuis GitHub
-- **Scripts automatisés** - Configuration et déploiement
-- **Variables d'environnement** - Gestion production/development
-- **CI/CD** - Intégration continue
+Ce template inclut automatiquement le kit de composants `@pbugeon/nuxt-components-kit` qui fournit des composants réutilisables :
 
-## 🛠 **Installation Rapide**
+### Composants disponibles
 
-### **1. Créer un nouveau projet**
-```bash
-# Depuis le répertoire script/
-./init-project.sh client "Nom du Client"
+- **Layout** : `AppHeader`, `AppFooter`, `AppNavigation`
+- **UI** : `AppButton`, `AppCard`, `AppIcon`
+- **Sections** : `HeroSection`, `ServicesGrid`, `BookingSection`
+
+### Utilisation
+
+Les composants sont automatiquement importés avec le préfixe `Kit` :
+
+```vue
+<template>
+  <div>
+    <KitAppHeader />
+    <KitHeroSection />
+    <KitAppButton>Cliquez ici</KitAppButton>
+  </div>
+</template>
 ```
 
-### **2. Configuration automatique**
-Le script configure automatiquement :
-- ✅ Projet Nuxt avec toutes les dépendances
-- ✅ Intégration Strapi
-- ✅ Configuration Sentry (création automatique du projet)
-- ✅ Variables d'environnement
-- ✅ Scripts de déploiement
+### Configuration automatique
 
-### **3. Déploiement en production**
+Le kit est configuré automatiquement lors de l'installation. Si vous devez le reconfigurer manuellement :
+
 ```bash
-# Dans le projet créé
+chmod +x scripts/setup-kit.sh
+./scripts/setup-kit.sh
+```
+
+## 🛠️ Installation
+
+1. **Cloner le template**
+```bash
+git clone <votre-repo-template>
+cd template-nuxt-front
+```
+
+2. **Installer les dépendances**
+```bash
+npm install
+```
+
+3. **Configuration automatique du kit**
+```bash
+./scripts/setup-kit.sh
+```
+
+4. **Lancer en développement**
+```bash
+npm run dev
+```
+
+## 📋 Scripts disponibles
+
+- `npm run dev` - Lancement en développement
+- `npm run build` - Build de production
+- `npm run generate` - Génération statique
+- `./scripts/setup-kit.sh` - Configuration du kit de composants
+- `./deploy.sh` - Déploiement automatique
+
+## 🔧 Configuration
+
+### Variables d'environnement
+
+Copiez `env.example` vers `env.local` et configurez :
+
+```bash
+cp env.example env.local
+```
+
+### Strapi
+
+Configurez l'URL de votre instance Strapi dans `nuxt.config.ts` ou via les variables d'environnement.
+
+### Monitoring
+
+Le monitoring est configuré automatiquement en production via les variables d'environnement.
+
+## 🚀 Déploiement
+
+Utilisez le script de déploiement automatique :
+
+```bash
 ./deploy.sh
 ```
 
-## 📁 **Structure du Template**
+Ou déployez manuellement sur Vercel, Netlify, ou votre plateforme préférée.
 
-```
-template-nuxt-front/
-├── 📄 nuxt.config.ts          # Configuration Nuxt avec monitoring
-├── 📄 package.json             # Dépendances (Sentry, Analytics, Uptime Robot)
-├── 📄 vercel.json             # Configuration Vercel
-├── 📄 env.example             # Variables d'environnement
-├── 📄 deploy.sh               # Script de déploiement automatisé
-├── 📄 DEPLOYMENT.md           # Guide de déploiement
-├── 📄 MONITORING.md           # Guide du monitoring
-├── 📁 composables/
-│   └── 📄 useMonitoring.ts    # Composable de monitoring générique
-├── 📁 pages/
-│   ├── 📄 sentry-test.vue     # Test Sentry
-│   ├── 📄 analytics-test.vue  # Test Analytics
-│   └── 📄 uptime-test.vue     # Test Uptime Robot
-└── 📁 components/
-    └── 📄 SentryTest.vue      # Composant de test Sentry
-```
+## 📚 Documentation
 
-## 🔧 **Configuration**
+- [Nuxt 3](https://nuxt.com/docs)
+- [Strapi](https://docs.strapi.io/)
+- [Kit de composants](https://github.com/paulbugeon/nuxt-components-kit)
 
-### **Variables d'Environnement Requises**
+## 🤝 Contribution
 
-```bash
-# Strapi
-NUXT_PUBLIC_STRAPI_URL=https://votre-strapi-url.com
-NUXT_PUBLIC_STRAPI_TOKEN=votre_token
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
 
-# Sentry
-NUXT_PUBLIC_SENTRY_DSN=votre_sentry_dsn
-NUXT_PUBLIC_SENTRY_ENVIRONMENT=development
+## 📄 Licence
 
-# Analytics
-NUXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-NUXT_PUBLIC_PLAUSIBLE_DOMAIN=votre-domaine.com
-NUXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-
-# Uptime Robot
-NUXT_PUBLIC_UPTIME_ROBOT_API_KEY=votre_api_key
-NUXT_PUBLIC_UPTIME_ROBOT_MONITOR_ID=votre_monitor_id
-
-# Grafana
-NUXT_PUBLIC_GRAFANA_URL=http://localhost:3000
-NUXT_PUBLIC_GRAFANA_API_KEY=votre_api_key
-```
-
-## 📊 **Utilisation du Monitoring**
-
-### **Composable useMonitoring**
-
-```typescript
-// Dans vos composants
-const { 
-  initializeMonitoring, 
-  trackEvent, 
-  trackPageView, 
-  captureError,
-  checkUptimeStatus 
-} = useMonitoring()
-
-// Initialiser le monitoring
-onMounted(() => {
-  initializeMonitoring()
-})
-
-// Tracker un événement
-trackEvent('button_click', { 
-  button: 'cta', 
-  page: 'home' 
-})
-
-// Capturer une erreur
-captureError(error, { context: 'user_action' })
-
-// Vérifier le statut Uptime Robot
-const status = await checkUptimeStatus()
-```
-
-### **Pages de Test**
-
-- **`/sentry-test`** - Test Sentry et monitoring d'erreurs
-- **`/analytics-test`** - Test Analytics et tracking utilisateur
-- **`/uptime-test`** - Test Uptime Robot et surveillance
-
-## 🚀 **Déploiement**
-
-### **Déploiement Automatique**
-
-1. **Configuration GitHub** : Le script configure automatiquement l'origine
-2. **Configuration Vercel** : Intégration automatique avec Vercel
-3. **Variables d'environnement** : Configuration production/development
-4. **Monitoring en production** : Tous les outils sont configurés
-
-### **Script de Déploiement**
-
-```bash
-# Déploiement complet
-./deploy.sh
-
-# Le script :
-# 1. Vérifie le projet
-# 2. Installe les dépendances
-# 3. Teste le build
-# 4. Push vers GitHub
-# 5. Configure Vercel
-# 6. Déploie en production
-```
-
-## 📚 **Documentation**
-
-- **`DEPLOYMENT.md`** - Guide complet de déploiement
-- **`MONITORING.md`** - Guide du système de monitoring
-- **`env.example`** - Exemple de configuration
-- **`vercel.json`** - Configuration Vercel
-
-## 🎯 **Avantages du Template**
-
-### **✅ Professionnel**
-- Monitoring de niveau entreprise
-- Intégration complète des outils
-- Configuration automatisée
-
-### **✅ Réutilisable**
-- Un seul template pour tous les projets
-- Configuration générique et adaptable
-- Scripts d'automatisation
-
-### **✅ Maintenable**
-- Une seule source de vérité
-- Mises à jour centralisées
-- Documentation complète
-
-### **✅ Productif**
-- Création de projet en quelques minutes
-- Déploiement automatique
-- Monitoring immédiat
-
-## 🔄 **Mise à Jour du Template**
-
-Pour mettre à jour le template :
-
-```bash
-# Depuis le répertoire template-nuxt-front/
-git add .
-git commit -m "feat: update template with new features"
-git push origin main
-
-# Les nouveaux projets utiliseront automatiquement la version mise à jour
-```
-
-## 🎉 **Résultat Final**
-
-Avec ce template, chaque nouveau projet aura automatiquement :
-
-1. **🚀 Nuxt 3** avec Strapi intégré
-2. **📊 Monitoring complet** (Sentry, Analytics, Uptime Robot)
-3. **🌐 Déploiement automatique** sur Vercel
-4. **📱 PWA** et optimisation mobile
-5. **🔧 Scripts automatisés** pour tout configurer
-6. **📚 Documentation complète** pour chaque aspect
-
-**Prêt à créer des projets professionnels en quelques minutes ?** 🚀
+MIT

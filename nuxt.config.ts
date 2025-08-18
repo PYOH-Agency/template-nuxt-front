@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     ...(process.env.NODE_ENV === 'production' ? ['@sentry/nuxt', '@nuxtjs/google-analytics'] : [])
   ],
+  
+  // Composants auto-importés
+  components: {
+    dirs: [
+      '~/components',
+      '~/node_modules/@pbugeon/nuxt-components-kit/components'
+    ]
+  },
   strapi: {
     url: process.env.NUXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
     prefix: '/api',
