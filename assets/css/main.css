@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import du CSS personnalisé */
+@import './custom.css';
+
 /* Styles personnalisés pour le template */
 @layer base {
   html {

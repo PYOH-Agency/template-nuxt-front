@@ -1,118 +1,143 @@
-# Template Nuxt 3 + Strapi + Monitoring Complet
+# Site Web - Philippe Bugeon
 
-Template Nuxt 3 avec intégration Strapi et monitoring complet pour la production.
+Site web professionnel pour Philippe Bugeon, psychopraticien à Nantes.
+
+## 🎯 Objectif
+
+Site web moderne et professionnel inspiré du design de [Ludovic Harel](https://www.ludovicharel-therapie.com/) avec :
+- Design épuré et professionnel
+- Couleurs chaleureuses et accueillantes
+- Moins d'arrondis pour un look plus professionnel
+- Intégration Cal.com pour la prise de rendez-vous
+- Kit de composants réutilisables
 
 ## 🚀 Fonctionnalités
 
-- **Nuxt 3** - Framework Vue.js moderne
-- **Strapi** - Headless CMS intégré
-- **Tailwind CSS** - Framework CSS utilitaire
-- **Pinia** - Gestion d'état Vue 3
-- **Monitoring complet** - Sentry, Google Analytics, Uptime Robot
-- **Kit de composants** - Composants réutilisables @pbugeon/nuxt-components-kit
+### ✅ Implémentées
+- **Page d'accueil** avec sections :
+  - Hero section avec appel à l'action
+  - Services (thérapie individuelle et de groupe)
+  - À propos avec formations
+  - Témoignages de patients
+  - Formulaire de contact
+- **Navigation** responsive avec header et footer
+- **Intégration Cal.com** pour la prise de rendez-vous
+- **Design responsive** mobile-first
+- **Kit de composants** @pbugeon/nuxt-components-kit
 
-## 📦 Kit de Composants
+### 🔄 À venir
+- **Système Stripe** pour le paiement en ligne
+- **Deux produits** :
+  - Thérapie individuelle
+  - Thérapie de groupe
+- **Checkout Stripe** intégré
+- **Photos de M. Bugeon** (remplacer les placeholders)
 
-Ce template inclut automatiquement le kit de composants `@pbugeon/nuxt-components-kit` qui fournit des composants réutilisables :
+## 🛠️ Technologies
 
-### Composants disponibles
+- **Frontend** : Nuxt 3 + Vue 3
+- **Styling** : Tailwind CSS
+- **Composants** : @pbugeon/nuxt-components-kit
+- **Réservations** : Cal.com (paul-bugeon-el1oht)
+- **Paiements** : Stripe (à implémenter)
 
-- **Layout** : `AppHeader`, `AppFooter`, `AppNavigation`
-- **UI** : `AppButton`, `AppCard`, `AppIcon`
-- **Sections** : `HeroSection`, `ServicesGrid`, `BookingSection`
+## 📁 Structure du projet
 
-### Utilisation
+```
+components/
+├── AboutSection.vue          # Section "À propos"
+├── ContactSection.vue        # Section contact avec formulaire
+├── TestimonialsSection.vue   # Section témoignages
+└── (autres composants du kit)
 
-Les composants sont automatiquement importés avec le préfixe `Kit` :
+pages/
+└── index.vue                 # Page d'accueil
 
-```vue
-<template>
-  <div>
-    <KitAppHeader />
-    <KitHeroSection />
-    <KitAppButton>Cliquez ici</KitAppButton>
-  </div>
-</template>
+assets/
+├── css/
+│   ├── main.css             # CSS principal + Tailwind
+│   └── custom.css           # Styles personnalisés
 ```
 
-### Configuration automatique
+## 🎨 Design
 
-Le kit est configuré automatiquement lors de l'installation. Si vous devez le reconfigurer manuellement :
+### Couleurs
+- **Bleu chaleureux** : #4f46e5
+- **Indigo chaleureux** : #6366f1  
+- **Orange chaleureux** : #f97316
+- **Gris neutre** : #1f2937
+
+### Typographie
+- **Titres** : Font-bold, tailles 2xl à 6xl
+- **Corps** : Font-medium, tailles base à xl
+- **Navigation** : Font-medium
+
+### Composants
+- **Boutons** : Moins arrondis (border-radius: 0.375rem)
+- **Cards** : Ombres subtiles, transitions douces
+- **Formulaires** : Design professionnel, focus states
+
+## 🚀 Démarrage
 
 ```bash
-chmod +x scripts/setup-kit.sh
-./scripts/setup-kit.sh
-```
-
-## 🛠️ Installation
-
-1. **Cloner le template**
-```bash
-git clone <votre-repo-template>
-cd template-nuxt-front
-```
-
-2. **Installer les dépendances**
-```bash
+# Installation des dépendances
 npm install
-```
 
-3. **Configuration automatique du kit**
-```bash
-./scripts/setup-kit.sh
-```
-
-4. **Lancer en développement**
-```bash
+# Démarrage du serveur de développement
 npm run dev
+
+# Build pour la production
+npm run build
+
+# Preview de la production
+npm run preview
 ```
-
-## 📋 Scripts disponibles
-
-- `npm run dev` - Lancement en développement
-- `npm run build` - Build de production
-- `npm run generate` - Génération statique
-- `./scripts/setup-kit.sh` - Configuration du kit de composants
-- `./deploy.sh` - Déploiement automatique
 
 ## 🔧 Configuration
 
 ### Variables d'environnement
+```env
+# Cal.com
+CAL_LINK=paul-bugeon-el1oht
 
-Copiez `env.example` vers `env.local` et configurez :
-
-```bash
-cp env.example env.local
+# Stripe (à configurer)
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
 ```
 
-### Strapi
+### Personnalisation
+- **Couleurs** : Modifier `assets/css/custom.css`
+- **Contenu** : Éditer les composants Vue
+- **Images** : Remplacer les placeholders par les photos de M. Bugeon
 
-Configurez l'URL de votre instance Strapi dans `nuxt.config.ts` ou via les variables d'environnement.
+## 📱 Responsive
 
-### Monitoring
+- **Mobile** : Design mobile-first
+- **Tablet** : Grilles adaptatives
+- **Desktop** : Layout complet avec navigation
 
-Le monitoring est configuré automatiquement en production via les variables d'environnement.
+## 🔗 Liens utiles
+
+- **Cal.com** : https://cal.com/paul-bugeon-el1oht
+- **Kit de composants** : @pbugeon/nuxt-components-kit
+- **Design inspiré** : https://www.ludovicharel-therapie.com/
+
+## 📝 Notes de développement
+
+- Utilisation du kit de composants pour la cohérence
+- Design moins arrondi pour un look professionnel
+- Couleurs chaleureuses pour l'aspect accueillant
+- Intégration Cal.com pour la simplicité des réservations
+- Structure modulaire pour faciliter les modifications
 
 ## 🚀 Déploiement
 
-Utilisez le script de déploiement automatique :
+Le site est prêt pour être déployé sur :
+- Vercel (recommandé)
+- Netlify
+- GitHub Pages
+- Serveur VPS
 
-```bash
-./deploy.sh
-```
+## 📞 Support
 
-Ou déployez manuellement sur Vercel, Netlify, ou votre plateforme préférée.
-
-## 📚 Documentation
-
-- [Nuxt 3](https://nuxt.com/docs)
-- [Strapi](https://docs.strapi.io/)
-- [Kit de composants](https://github.com/paulbugeon/nuxt-components-kit)
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
-
-## 📄 Licence
-
-MIT
+Pour toute question ou modification, contacter l'équipe de développement PYOH.
