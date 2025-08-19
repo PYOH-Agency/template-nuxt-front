@@ -1,102 +1,123 @@
 /* Custom CSS pour le site de Philippe Bugeon */
-/* Design moins arrondi et couleurs chaleureuses */
+/* Design professionnel sans arrondis et couleurs pastels */
 
-/* Réduire les arrondis */
-.rounded-xl {
-  border-radius: 0.5rem !important;
+/* Supprimer tous les arrondis */
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl,
+.rounded-lg,
+.rounded-md,
+.rounded-sm {
+  border-radius: 0 !important;
 }
 
-.rounded-2xl {
-  border-radius: 0.75rem !important;
-}
-
-.rounded-3xl {
-  border-radius: 1rem !important;
-}
-
-/* Couleurs plus chaleureuses */
+/* Couleurs pastels professionnelles */
 :root {
-  --color-warm-blue: #4f46e5;
-  --color-warm-indigo: #6366f1;
-  --color-warm-purple: #8b5cf6;
-  --color-warm-orange: #f97316;
-  --color-warm-amber: #f59e0b;
+  --color-pastel-blue: #e0e7ff;
+  --color-pastel-indigo: #e0e7ff;
+  --color-pastel-purple: #f3e8ff;
+  --color-pastel-slate: #f8fafc;
+  --color-pastel-gray: #f1f5f9;
+  --color-pastel-slate-dark: #475569;
+  --color-pastel-blue-dark: #3b82f6;
+  --color-pastel-indigo-dark: #6366f1;
 }
 
-/* Header avec couleurs plus chaleureuses */
+/* Header avec couleurs pastels */
 .bg-gradient-to-r.from-blue-600.to-emerald-600 {
-  background: linear-gradient(to right, var(--color-warm-blue), var(--color-warm-orange)) !important;
+  background: linear-gradient(to right, #3b82f6, #10b981) !important;
 }
 
 .bg-gradient-to-r.from-blue-600.to-emerald-600:hover {
-  background: linear-gradient(to right, #4338ca, #ea580c) !important;
+  background: linear-gradient(to right, #2563eb, #059669) !important;
 }
 
-/* Hero section avec couleurs plus chaleureuses */
+/* Hero section avec couleurs pastels */
 .bg-gradient-to-br.from-blue-600.via-indigo-700.to-purple-800 {
-  background: linear-gradient(to bottom right, var(--color-warm-blue), var(--color-warm-indigo), var(--color-warm-purple)) !important;
+  background: linear-gradient(to bottom right, #3b82f6, #6366f1, #8b5cf6) !important;
 }
 
-/* Boutons avec couleurs plus chaleureuses */
+/* Boutons avec couleurs pastels */
 .bg-blue-600 {
-  background-color: var(--color-warm-blue) !important;
+  background-color: #3b82f6 !important;
 }
 
 .bg-blue-600:hover {
-  background-color: #4338ca !important;
+  background-color: #2563eb !important;
 }
 
-/* Icônes avec couleurs plus chaleureuses */
+/* Icônes avec couleurs pastels */
 .text-blue-600 {
-  color: var(--color-warm-blue) !important;
+  color: #3b82f6 !important;
 }
 
 .text-blue-600:hover {
-  color: #4338ca !important;
+  color: #2563eb !important;
 }
 
-/* Footer avec couleurs plus chaleures */
+/* Footer avec couleurs pastels */
 .bg-gray-900 {
-  background-color: #1f2937 !important;
+  background-color: #1e293b !important;
 }
 
 .text-blue-400 {
-  color: var(--color-warm-blue) !important;
+  color: #60a5fa !important;
 }
 
 .text-emerald-300 {
-  color: var(--color-warm-orange) !important;
+  color: #6ee7b7 !important;
 }
 
-/* Cards avec moins d'arrondis */
+/* Cards avec design professionnel */
 .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Transitions douces */
+.transition-all {
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Hover effects subtils */
+.hover\:shadow-xl:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Transitions plus douces */
-.transition-all {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Hover effects plus subtils */
-.hover\:shadow-xl:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-}
-
-/* Boutons avec design plus professionnel */
+/* Boutons avec design professionnel */
 .btn-primary {
-  border-radius: 0.375rem !important;
-  font-weight: 600 !important;
+  border-radius: 0 !important;
+  font-weight: 500 !important;
   letter-spacing: 0.025em !important;
 }
 
-/* Formulaires avec design plus professionnel */
+/* Formulaires avec design professionnel */
 input, textarea, select {
-  border-radius: 0.375rem !important;
+  border-radius: 0 !important;
   border: 1px solid #d1d5db !important;
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: var(--color-warm-blue) !important;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Couleurs de fond pastels */
+.bg-pastel-blue {
+  background-color: var(--color-pastel-blue) !important;
+}
+
+.bg-pastel-indigo {
+  background-color: var(--color-pastel-indigo) !important;
+}
+
+.bg-pastel-purple {
+  background-color: var(--color-pastel-purple) !important;
+}
+
+.bg-pastel-slate {
+  background-color: var(--color-pastel-slate) !important;
+}
+
+.bg-pastel-gray {
+  background-color: var(--color-pastel-gray) !important;
 }

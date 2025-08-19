@@ -21,6 +21,7 @@
     "@pbugeon/nuxt-components-kit": "^1.0.9",
     "@pinia/nuxt": "^0.5.1",
     "@sentry/nuxt": "^10.5.0",
+    "@stripe/stripe-js": "^7.8.0",
     "pinia": "^2.1.7"
   }
 }
